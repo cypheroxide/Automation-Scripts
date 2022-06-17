@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+sudo apt update -yy
+sudo apt full-upgrade -yy
+sudo apt dist-upgrade -yy
+sudo apt autoremove -yy
+sudo apt clean
+sudo apt purge
+sudo apt update -yy
+sudo apt full-upgrade --fix-missing
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt install apt-transport-https curl gnupg
+
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
+
+
+echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
+
+sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
+
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+
+sudo apt update
+sudo apt install spotify-client gimp libreoffice vlc filezilla ktorrent firefox gparted geany brave-browser ffmpeg obs-studio audacious handbrake kdenlive timeshift gimp kazam neofetch virtualbox krita bettercap yakuake
+
+exit

@@ -1,0 +1,5 @@
+apt update && apt upgrade -y && apt dist-upgrade -y && apt clean
+
+ntpdate us.pool.ntp.org
+
+

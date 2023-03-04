@@ -1,0 +1,27 @@
+# In this script, some basic bash aliases are defined and appended to the end of the '.zshrc' file, which
+# is located in the user's home directory ('~').  By using the 'source' command, these aliases become
+# available in the current shell session.
+
+
+
+#!/bin/bash
+
+# Define aliases
+alias updt='sudo apt update && sudo apt upgrade -y'
+alias cleanup='sudo apt clean && sudo apt autopurge -y'
+alias c='clear'
+alias h='history'
+alias v='vim'
+
+# Write aliases to .zshrc file
+cat <<EOF >> ~/.zshrc
+# Aliases
+$(alias)
+EOF
+
+# Source the .zshrc file to make the aliases available in the current shell
+source ~/.zshrc
+
+# Note that this script assumes that the user is running the zsh shell, which is the default shell in some Debian-based
+# Linux distributions. If the user is running a different shell, such as bash, then the script should be modified
+# accordingly.

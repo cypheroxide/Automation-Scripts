@@ -47,33 +47,48 @@ sudo apt update && sudo apt install brave-browser spotify-client -y
 echo "I like using Snaps and Flatpaks. It breaks fewer things on my system."
 #
 #
-sudo apt install snapd & flatpak -y
+sudo apt install snapd -y # flatpaks have been replaced with other options
 #
 #
-systemctl restart snapd.service
+sudo systemctl start snapd.service
+sudo systemctl enable --now snapd.service
+sudo systemctl start snapd.apparmor
 #
 #
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
 #
 #
-wget -qO - https://packagecloud.io/shiftkey/desktop/gpgkey | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftky-desktop.list'
+# Honestly, I forgot what this was used for and don't have it in my sources.list.d anymore.
 #
 #
-flatpak install com.anydesk.Anydesk.flatpakref
+#wget -qO - https://packagecloud.io/shiftkey/desktop/gpgkey | sudo apt-key add -
+#sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftky-desktop.list'
 #
 #
-flatpak install com.skype.Client.flatpakref
+# Some of the flatpaks aren't used anymore since finding other options using electron app packages
+# and some aren't used at all anymore. Truthfully, I've moved almost completely to snaps and docker.
+#
+#flatpak install com.anydesk.Anydesk.flatpakref
 #
 #
-flatpak install com.vinszent.GnomeTwitch.flatpakref
+#flatpak install com.skype.Client.flatpakref
 #
 #
-flatpak install org.telegram.desktop.flatpakref
+#flatpak install com.vinszent.GnomeTwitch.flatpakref
 #
 #
-flatpak install us.zoom.Zoom.flatpakref
+snap install telegram-desktop
+#
+snap install teams-for-linux
+#
+snap install zoom-client
+#
+snap install signal-desktop
+#
+snap install discord
+#
+snap install sublime-text
 #
 #
 echo "Alright. We've got a few things taken care of; let's continue"
@@ -82,7 +97,7 @@ echo "Alright. We've got a few things taken care of; let's continue"
 sudo apt update
 #
 #
-sudo apt install yakuake gimp libreoffice vlc filezilla transmission geany audacious handbrake kendlive timeshift gimp kazam neofetch krita bettercap hostapd-wpe mdk4 hcxdumptool hcxtools github-desktop gparted
+sudo apt install yakuake gimp libreoffice vlc filezilla transmission geany audacious handbrake kendlive timeshift neofetch krita bettercap hostapd-wpe mdk4 hcxdumptool hcxtools github-desktop gparted thunderbird
 #
 #
 echo "Okay, let's get started on the big stuff.  This may take awhile depending on your network speed and computer performance."
@@ -96,13 +111,13 @@ echo "Okay, that should be it.  Anything else will have to be a matter of prefer
 #
 sudo apt --fix-broken install
 #
-sudo apt update -yy
+sudo apt update -y
 #
 sudo apt upgrade --fix-missing
 #
-sudo apt full-upgrade -yy
+sudo apt full-upgrade -y
 #
-sudo apt autoremove -yy
+sudo apt autoremove -y
 #
 sudo apt purge
 #
